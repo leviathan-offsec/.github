@@ -2,8 +2,6 @@
 
 <img src="https://raw.githubusercontent.com/leviathan-offsec/.github/main/profile/banner.png" alt="Leviathan OffSec: tools that report what they could not evaluate" width="100%">
 
-**Tools that report what they could not evaluate.**
-
 </div>
 
 ---
