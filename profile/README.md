@@ -19,27 +19,6 @@ The work starts from a question, not a tool: *what is actually deployed, on how
 many hosts, and does the vulnerability class still apply?* Most tooling answers
 a version of that. These repos answer the parts that were left over.
 
-### Measured, not asserted
-
-```text
-$ favmap.py census "product:Dahua"
-
-sampled            : 300
-distinct hashes    : 2
-
-  HOSTS      %          HASH  MODEL(S)
-    233  87.6%    1653394551  Dahua-based DVR(58), DH-XVR1B08-I(41)
-     33  12.4%    2019488876  Dahua HCVR(4), SS 5532 MF(2)
-
-$ favmap.py expand 1653394551
-http.favicon.hash:1653394551  ->  723,646 indexed hosts
-```
-
-One favicon hash spans 723,646 indexed hosts across 49 product strings, including
-Lorex and KB Vision rebadges. That is a firmware generation, fingerprinted from a
-passive index read, with nothing downloaded and no device contacted.
-
-Reproduce it yourself: the script is in `[a private repo]`.
 
 ### Tools
 
@@ -55,7 +34,6 @@ They chain: `surfacediff` snapshots the surface, `HostageLVX` tests it for
 claimability, `FenrirLVX` fingerprints what is there, `leviathan-core` decides
 which of the year's CVEs apply to you and shows its work.
 
-### Principles
 
 **Passive by default.** Index queries and public vulnerability metadata. Nothing
 is sent to a host you have not named. Active testing needs written authorisation
