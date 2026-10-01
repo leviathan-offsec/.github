@@ -1,178 +1,92 @@
-<div align="center">
+# Leviathan OffSec
 
-  <img src="https://raw.githubusercontent.com/leviathan-offsec/.github/main/profile/banner.svg" alt="Leviathan OffSec Banner" width="100%" />
+**Deterministic perimeter intelligence for red teams and security researchers.**
 
-  <br><br>
-
-  [![Platform](https://img.shields.io/badge/Platform-leviathan.ac-00ffcc?style=for-the-badge&logo=googlechrome&logoColor=07090e)](https://leviathan.ac)
-  [![Research](https://img.shields.io/badge/Research-Dossiers-38bdf8?style=for-the-badge&logo=gitbook&logoColor=07090e)](https://leviathan.ac/research/)
-  [![License](https://img.shields.io/badge/License-MIT-0d111a?style=for-the-badge&logo=opensourceinitiative&logoColor=white)](https://opensource.org/licenses/MIT)
-  [![Lead](https://img.shields.io/badge/Lead-@cyeezy08-1e293b?style=for-the-badge&logo=github&logoColor=white)](https://github.com/cyeezy08)
-
-  <br>
-
-  <p align="center">
-    <b>Stateless perimeter diffing, high-concurrency takeover detection, and transparent CMS auditing.</b><br>
-    Built for red teams, bug bounty hunters, and defensive engineers who value deterministic signals over vendor noise.
-  </p>
-
-</div>
+We build open source tools that do one job well: snapshot attack surfaces, detect changes, audit web applications, and rank risk with auditable math—not vendor black boxes.
 
 ---
 
-### The Anti-Noise Philosophy
+## Our Tools
 
-Most modern Attack Surface Management (ASM) platforms push proprietary cloud dashboards, heavy background daemons, and inflated CVSS scores that drown teams in false positives. 
+**[surfacediff](https://github.com/leviathan-offsec/surfacediff)** – Immutable content-addressed perimeter snapshots with field-by-field diffing. Exits `1` on deltas. `Python (stdlib)`.
 
-**Leviathan OffSec builds the deterministic alternative:**
+**[HostageLVX](https://github.com/leviathan-offsec/HostageLVX)** – Subdomain takeover detection with 81 verified CNAME fingerprints across 21 cloud providers. `Go CLI`.
 
-| Capability | Traditional ASM / Scanners | Leviathan OffSec Suite |
-| :--- | :--- | :--- |
-| **Runtime Model** | Heavy background agents, persistent daemons | **Stateless CLI tools** (`stdin` &rarr; `stdout`) |
-| **Pipeline Integration** | Proprietary webhooks & dashboards | **Exit Code `1` on deltas** (native UNIX cron) |
-| **Subdomain Takeovers** | Simple CNAME matching (high false alarms) | **81 verified claimability signatures** across 21 clouds |
-| **Advisory Coverage** | Silent failure when plugin has no templates | **Explicit match-to-unknown coverage ratios** printed |
-| **Risk Prioritization** | Proprietary vendor score black-boxes | **Auditable math:** CVSS vectors + EPSS + CISA KEV |
-| **Licensing** | Enterprise SaaS paywalls | **100% Free & Open Source (MIT)** |
+**[FenrirLVX](https://github.com/leviathan-offsec/FenrirLVX)** – WordPress and CMS vulnerability scanner with offline CVE correlation and transparent coverage reporting. `Go CLI`.
+
+**[leviathan-core](https://github.com/leviathan-offsec/leviathan-core)** – Risk ranking kernel. Computes CVSS + EPSS + CISA KEV into auditable signals. `Python`.
+
+**[leviathan-intel](https://github.com/leviathan-offsec/leviathan-intel)** – Passive threat intelligence correlation for authorized environments. `Python`.
 
 ---
 
-### Chained Pipeline Architecture
+## Getting Started
 
-Leviathan tools follow the standard UNIX philosophy: each tool does one job deterministically and composes cleanly inside standard bash scripts, cron jobs, or GitHub Actions:
-
-```
-┌──────────────────────────────────────────────┐
-│  Target Perimeters (httpx, subfinder, naabu) │
-└──────────────────────┬───────────────────────┘
-                       │ stdin (JSONL / hosts)
-                       ▼
-┌──────────────────────────────────────────────┐
-│                 surfacediff                  │ ───[ Delta Exit 1 ]───► Instant Slack/Webhook
-│    (Content-Addressed Perimeter Snapshots)   │
-└──────────────────────┬───────────────────────┘
-                       │ changed / new assets
-                       ▼
-         ┌─────────────────────────────┐
-         │                             │
-         ▼                             ▼
-┌─────────────────────────────┐ ┌─────────────────────────────┐
-│         HostageLVX          │ │          FenrirLVX          │
-│   (Subdomain Takeovers)     │ │   (CMS Surface Auditor)     │
-│ 81 Multi-Cloud Fingerprints │ │ Transparent Advisory Ratio  │
-└──────────────┬──────────────┘ └──────────────┬──────────────┘
-               │ verified findings             │ coverage data
-               └──────────────┬────────────────┘
-                              ▼
-┌──────────────────────────────────────────────┐
-│                leviathan-core                │
-│    (Auditable CVSS + EPSS + KEV Risk Math)   │
-└──────────────────────────────────────────────┘
-```
+- **[Documentation](https://leviathan.ac/docs)** – Learn all our tools and workflows
+- **[Quick 60-Second Pipeline](#quick-start)** – Snapshot → Diff → Audit → Rank
+- **[Research Dossiers](https://leviathan.ac/research/)** – Published offensive engineering teardowns
+- **[Need Help?](https://github.com/leviathan-offsec)** – Open issues or reach out
 
 ---
 
-### Core Tooling Suite
-
-<table>
-  <thead>
-    <tr>
-      <th>Tool</th>
-      <th>Focus</th>
-      <th>Stack</th>
-      <th>Quick Install</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><a href="https://github.com/leviathan-offsec/surfacediff"><b>surfacediff</b></a></td>
-      <td>Immutable, content-addressed perimeter snapshots and field-by-field diffing. Exits <code>1</code> on any detected delta.</td>
-      <td><code>Python</code> (stdlib)</td>
-      <td><code>pip install git+https://github.com/leviathan-offsec/surfacediff.git</code></td>
-    </tr>
-    <tr>
-      <td><a href="https://github.com/leviathan-offsec/HostageLVX"><b>HostageLVX</b></a></td>
-      <td>High-speed dangling DNS and subdomain takeover engine with 81 CNAME fingerprints across 21 cloud providers.</td>
-      <td><code>Go</code> (CLI)</td>
-      <td><code>go install github.com/leviathan-offsec/HostageLVX@latest</code></td>
-    </tr>
-    <tr>
-      <td><a href="https://github.com/leviathan-offsec/FenrirLVX"><b>FenrirLVX</b></a></td>
-      <td>WordPress and CMS vulnerability scanner with offline CVE correlation and transparent coverage-gap reporting.</td>
-      <td><code>Go</code> (CLI)</td>
-      <td><code>go install github.com/leviathan-offsec/FenrirLVX@latest</code></td>
-    </tr>
-    <tr>
-      <td><a href="https://github.com/leviathan-offsec/leviathan-core"><b>leviathan-core</b></a></td>
-      <td>Contract-enforced risk ranking kernel computing from raw CVSS vectors, EPSS probabilities, and CISA KEV status.</td>
-      <td><code>Python</code> (Kernel)</td>
-      <td><code>pip install git+https://github.com/leviathan-offsec/leviathan-core.git</code></td>
-    </tr>
-    <tr>
-      <td><a href="https://github.com/leviathan-offsec/leviathan-intel"><b>leviathan-intel</b></a></td>
-      <td>Passive threat intelligence correlation and asset telemetry scoped strictly to authorized environments.</td>
-      <td><code>Python</code></td>
-      <td><code>git clone https://github.com/leviathan-offsec/leviathan-intel.git</code></td>
-    </tr>
-  </tbody>
-</table>
-
----
-
-### Quickstart: 60-Second Attack Surface Pipeline
+## Quick Start
 
 ```bash
-# 1. Probe your target perimeter and snapshot state
+# 1. Snapshot your perimeter state
 subfinder -d example.com -silent | httpx -json -silent | surfacediff snap -l prod
 
-# 2. On the next cron run, diff for changes (exits 1 if new hosts or changed titles appear)
-surfacediff diff -l prod || echo "[!] Perimeter modified since last snapshot"
+# 2. Check for changes on next run (exits 1 if new hosts or modified content)
+surfacediff diff -l prod
 
-# 3. Audit all discovered subdomains for verified takeovers
+# 3. Audit all subdomains for verified takeovers
 HostageLVX -l subs.txt -threads 50
 
-# 4. Fingerprint web applications and evaluate transparent database coverage
+# 4. Scan for known vulnerabilities with transparent coverage reporting
 fenrir -t https://target.example.com
 ```
 
 ---
 
-### Published Research Dossiers
+## Why Leviathan
 
-We publish complete offensive engineering research—including hardware disassemblies, failed hypotheses, and binary reversing post-mortems:
-
-<table>
-  <tr>
-    <td width="50%">
-      <div style="font-family: monospace; font-size: 0.72rem; color: #38bdf8; margin-bottom: 0.4rem;">// RESEARCH DOSSIER 0x02</div>
-      <h4><a href="https://leviathan.ac/posts/offline-wordpress-scanner-comparison/">Offline WordPress Scanners Compared</a></h4>
-      <p>CMSmap, Nuclei, Wapiti, and FenrirLVX benchmarked against advisory feeds and silent failure modes when plugins are missing from local databases.</p>
-      <sub>October 2026 &middot; 9 min read &middot; <a href="https://leviathan.ac/posts/offline-wordpress-scanner-comparison/">Read Dossier &rarr;</a></sub>
-    </td>
-    <td width="50%">
-      <div style="font-family: monospace; font-size: 0.72rem; color: #38bdf8; margin-bottom: 0.4rem;">// RESEARCH DOSSIER 0x01</div>
-      <h4><a href="https://leviathan.ac/posts/80-days-reversing-iot-dvr/">80 Days on an IoT DVR: Three Real Bugs, No Bounty</a></h4>
-      <p>HiSilicon ARM32 surveillance firmware across 28,006 units: static AES keys, unsigned root bootloaders, and command injections emulated with Unicorn Engine.</p>
-      <sub>September 2026 &middot; 16 min read &middot; <a href="https://leviathan.ac/posts/80-days-reversing-iot-dvr/">Read Dossier &rarr;</a></sub>
-    </td>
-  </tr>
-</table>
-
-<div align="center">
-  <p><b><a href="https://leviathan.ac/research/">Browse All Research &amp; Published Vulnerability Advisories &rarr;</a></b></p>
-</div>
+| | Traditional ASM / Scanners | Leviathan OffSec |
+|---|---|---|
+| **Runtime** | Heavy daemons + cloud dashboards | Stateless CLI tools (pipe-friendly) |
+| **Alerting** | Proprietary vendor scoring | Exit code `1` on perimeter delta |
+| **Takeovers** | Simple CNAME matching | 81 verified multi-cloud fingerprints |
+| **Risk Scoring** | Black-box vendor math | Auditable CVSS + EPSS + KEV vectors |
+| **Integration** | SaaS webhooks | Native UNIX (bash, cron, GitHub Actions) |
+| **Cost** | Enterprise SaaS | 100% Free & Open Source (MIT) |
 
 ---
 
-### Ethics & Operational Boundaries
+## Research
 
-* **Passive by Default:** Our intelligence tools prioritize index queries, DNS enumeration, and public vulnerability metadata. No invasive payloads are dispatched to unconfirmed targets.
-* **Authorized Testing Only:** Active penetration tests require explicit written scope and authorization.
-* **Intellectual Honesty:** If an exploit cannot reach the network or a vendor patched the gate, we state it plainly. Evidence over speculation.
+We publish complete offensive engineering research—failed hypotheses, binary reversals, hardware disassemblies, and real-world findings:
+
+- **[Offline WordPress Scanners Compared](https://leviathan.ac/posts/offline-wordpress-scanner-comparison/)** – CMSmap, Nuclei, Wapiti, FenrirLVX benchmarked. October 2026.
+- **[80 Days Reversing an IoT DVR](https://leviathan.ac/posts/80-days-reversing-iot-dvr/)** – Static AES keys, unsigned bootloaders, command injections in HiSilicon ARM32 firmware. September 2026.
+
+[Browse all research & advisories →](https://leviathan.ac/research/)
 
 ---
 
-<div align="center">
-  <sub>Research lab directed by <a href="https://github.com/cyeezy08">@cyeezy08</a>.</sub><br>
-  <sub>Official Laboratory Portal: <a href="https://leviathan.ac"><b>leviathan.ac</b></a> &middot; Verified Organization Domain: <code>leviathan.ac</code></sub>
-</div>
+## Ethics & Boundaries
+
+- **Passive by default** – DNS, indexing, and public metadata only. No invasive payloads to unconfirmed targets.
+- **Authorized testing only** – Active penetration tests require explicit written scope.
+- **Evidence over speculation** – If we can't reach it or it's patched, we say so.
+
+---
+
+## Community
+
+- **[Issues](https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Aleviathan-offsec)** – Report bugs, request features
+- **[Pull Requests](https://github.com/pulls?q=is%3Aopen+is%3Apr+user%3Aleviathan-offsec)** – Contribute improvements
+- **[Discussions](https://github.com/leviathan-offsec/leviathan-core/discussions)** – Ask questions, share ideas
+
+---
+
+**Directed by [@cyeezy08](https://github.com/cyeezy08)** • **[leviathan.ac](https://leviathan.ac)**
+
+Questions? Email [hello@leviathan.ac](mailto:hello@leviathan.ac) or open an issue.
