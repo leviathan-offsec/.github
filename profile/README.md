@@ -77,7 +77,12 @@ MIT licensed.
 | **Coverage** | Not reported | Printed on every run |
 | **Takeovers** | CNAME string match | 28 CNAME patterns, each service signature-checked |
 | **Risk** | Black-box vendor math | CVSS, EPSS and KEV as separate auditable inputs |
-| **Cost** | Enterprise seat | Free, MIT |
+| **Cost** | Enterprise seat | Free and MIT |
+
+Nothing here is behind a signup. Every tool is MIT, installs from source, and runs
+as a stateless binary you can audit before you trust it. Where that is not enough —
+continuous monitoring across a real perimeter, or a finding you need defended to an
+auditor — that is a conversation, not a paywall.
 
 ---
 
