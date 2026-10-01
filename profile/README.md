@@ -32,7 +32,7 @@ reason this exists. The measurement is in
 | Tool | What it does | Lang | Install |
 | :--- | :--- | :--- | :--- |
 | **[surfacediff](https://github.com/leviathan-offsec/surfacediff)** | Immutable content-addressed perimeter snapshots, field-by-field diffing, exits `1` on any delta | Python | `pip install git+https://github.com/leviathan-offsec/surfacediff.git` |
-| **[HostageLVX](https://github.com/leviathan-offsec/HostageLVX)** | Subdomain takeover detection, 29 CNAME patterns across 21 cloud services, each with its own takeover signature | Go | `go install github.com/leviathan-offsec/HostageLVX@latest` |
+| **[HostageLVX](https://github.com/leviathan-offsec/HostageLVX)** | Subdomain takeover detection, 28 CNAME patterns across 21 cloud services, each with its own takeover signature | Go | `go install github.com/leviathan-offsec/HostageLVX@latest` |
 | **[FenrirLVX](https://github.com/leviathan-offsec/FenrirLVX)** | WordPress and CMS attack surface mapping with offline CVE correlation and coverage reporting | Go | `go install github.com/leviathan-offsec/FenrirLVX@latest` |
 | **[leviathan-core](https://github.com/leviathan-offsec/leviathan-core)** | Which CVEs hit your registered assets, with the evidence chain attached | Python | `pip install -e .` |
 
@@ -75,7 +75,7 @@ MIT licensed.
 | **Runtime** | Heavy daemon plus a web console | Stateless CLI, pipe-friendly |
 | **Alerting** | Proprietary vendor score | Exit code `1` on a real delta |
 | **Coverage** | Not reported | Printed on every run |
-| **Takeovers** | CNAME string match | 29 CNAME patterns, each service signature-checked |
+| **Takeovers** | CNAME string match | 28 CNAME patterns, each service signature-checked |
 | **Risk** | Black-box vendor math | CVSS, EPSS and KEV as separate auditable inputs |
 | **Cost** | Enterprise seat | Free, MIT |
 
