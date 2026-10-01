@@ -32,7 +32,7 @@ reason this exists. The measurement is in
 | Tool | What it does | Lang | Install |
 | :--- | :--- | :--- | :--- |
 | **[surfacediff](https://github.com/leviathan-offsec/surfacediff)** | Immutable content-addressed perimeter snapshots, field-by-field diffing, exits `1` on any delta | Python | `pip install git+https://github.com/leviathan-offsec/surfacediff.git` |
-| **[HostageLVX](https://github.com/leviathan-offsec/HostageLVX)** | Subdomain takeover detection, 81 CNAME-verified fingerprints across 21 cloud providers | Go | `go install github.com/leviathan-offsec/HostageLVX@latest` |
+| **[HostageLVX](https://github.com/leviathan-offsec/HostageLVX)** | Subdomain takeover detection, 29 CNAME patterns across 21 cloud services, each with its own takeover signature | Go | `go install github.com/leviathan-offsec/HostageLVX@latest` |
 | **[FenrirLVX](https://github.com/leviathan-offsec/FenrirLVX)** | WordPress and CMS attack surface mapping with offline CVE correlation and coverage reporting | Go | `go install github.com/leviathan-offsec/FenrirLVX@latest` |
 | **[leviathan-core](https://github.com/leviathan-offsec/leviathan-core)** | Which CVEs hit your registered assets, with the evidence chain attached | Python | `pip install -e .` |
 
@@ -46,17 +46,22 @@ which of the year's CVEs apply to you and shows its work.
 
 ```bash
 # 1. Snapshot the perimeter
-subfinder -d example.com -silent | httpx -json -silent | surfacediff snap -l prod
+subfinder -d example.com -silent | httpx -json -silent | surfacediff snap -l prod --source httpx
 
 # 2. Diff against the last run. Exits 1 on new hosts or changed content.
 surfacediff diff -l prod
 
-# 3. Test what is there for verified takeovers
-HostageLVX -l subs.txt -threads 50
+# 3. Test what is there for verified takeovers (reads a list on stdin)
+cat subs.txt | hostage -t 50
 
 # 4. Fingerprint the CMS and correlate against the offline CVE set
-fenrir wordpress -t https://target.example.com
+fenrir scan -t https://target.example.com
 ```
+
+Both Go tools build to a lowercase binary — `hostage` and `fenrir` — even though
+the module paths are `HostageLVX` and `FenrirLVX`, so invoke them by binary name
+after install. `fenrir wordpress` additionally requires a Shodan key (`-k`); for a
+single known target without Shodan, use `fenrir scan`.
 
 Stateless CLIs, no daemons, no accounts, pipe into cron or GitHub Actions.
 MIT licensed.
@@ -70,7 +75,7 @@ MIT licensed.
 | **Runtime** | Heavy daemon plus a web console | Stateless CLI, pipe-friendly |
 | **Alerting** | Proprietary vendor score | Exit code `1` on a real delta |
 | **Coverage** | Not reported | Printed on every run |
-| **Takeovers** | CNAME string match | 81 verified multi-cloud fingerprints |
+| **Takeovers** | CNAME string match | 29 CNAME patterns, each service signature-checked |
 | **Risk** | Black-box vendor math | CVSS, EPSS and KEV as separate auditable inputs |
 | **Cost** | Enterprise seat | Free, MIT |
 
