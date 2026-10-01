@@ -144,12 +144,14 @@ We publish complete offensive engineering research—including hardware disassem
 <table>
   <tr>
     <td width="50%">
-      <h4>🔬 <a href="https://leviathan.ac/posts/offline-wordpress-scanner-comparison/">Offline WordPress Scanners Compared</a></h4>
+      <div style="font-family: monospace; font-size: 0.72rem; color: #38bdf8; margin-bottom: 0.4rem;">// RESEARCH DOSSIER 0x02</div>
+      <h4><a href="https://leviathan.ac/posts/offline-wordpress-scanner-comparison/">Offline WordPress Scanners Compared</a></h4>
       <p>CMSmap, Nuclei, Wapiti, and FenrirLVX benchmarked against advisory feeds and silent failure modes when plugins are missing from local databases.</p>
       <sub>October 2026 &middot; 9 min read &middot; <a href="https://leviathan.ac/posts/offline-wordpress-scanner-comparison/">Read Dossier &rarr;</a></sub>
     </td>
     <td width="50%">
-      <h4>🔬 <a href="https://leviathan.ac/posts/80-days-reversing-iot-dvr/">80 Days on an IoT DVR: Three Real Bugs, No Bounty</a></h4>
+      <div style="font-family: monospace; font-size: 0.72rem; color: #38bdf8; margin-bottom: 0.4rem;">// RESEARCH DOSSIER 0x01</div>
+      <h4><a href="https://leviathan.ac/posts/80-days-reversing-iot-dvr/">80 Days on an IoT DVR: Three Real Bugs, No Bounty</a></h4>
       <p>HiSilicon ARM32 surveillance firmware across 28,006 units: static AES keys, unsigned root bootloaders, and command injections emulated with Unicorn Engine.</p>
       <sub>September 2026 &middot; 16 min read &middot; <a href="https://leviathan.ac/posts/80-days-reversing-iot-dvr/">Read Dossier &rarr;</a></sub>
     </td>
