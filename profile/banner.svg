@@ -1,0 +1,60 @@
+<svg width="900" height="240" viewBox="0 0 900 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-grad" x1="0" y1="0" x2="900" y2="240" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#07090e" />
+      <stop offset="50%" stop-color="#0a0f1d" />
+      <stop offset="100%" stop-color="#07090e" />
+    </linearGradient>
+    <radialGradient id="glow" cx="450" cy="120" r="300" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#00ffcc" stop-opacity="0.14" />
+      <stop offset="100%" stop-color="#00ffcc" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="cyan-glow" x1="0" y1="0" x2="900" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#00ffcc" stop-opacity="0" />
+      <stop offset="20%" stop-color="#00ffcc" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#38bdf8" stop-opacity="1" />
+      <stop offset="80%" stop-color="#00ffcc" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#00ffcc" stop-opacity="0" />
+    </linearGradient>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#1b2333" stroke-width="0.75" stroke-opacity="0.5" />
+    </pattern>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="900" height="240" rx="10" fill="url(#bg-grad)" stroke="#1b2333" stroke-width="1.5" />
+  <rect width="900" height="240" rx="10" fill="url(#grid)" />
+  <rect width="900" height="240" rx="10" fill="url(#glow)" />
+
+  <!-- Accent Top Border -->
+  <path d="M 40 1 L 860 1" stroke="url(#cyan-glow)" stroke-width="2" />
+
+  <!-- Terminal Corner Accents -->
+  <path d="M 12 25 L 12 12 L 25 12" stroke="#00ffcc" stroke-width="1.5" fill="none" />
+  <path d="M 888 25 L 888 12 L 875 12" stroke="#00ffcc" stroke-width="1.5" fill="none" />
+  <path d="M 12 215 L 12 228 L 25 228" stroke="#00ffcc" stroke-width="1.5" fill="none" />
+  <path d="M 888 215 L 888 228 L 875 228" stroke="#00ffcc" stroke-width="1.5" fill="none" />
+
+  <!-- Brand Eyebrow -->
+  <g transform="translate(450, 52)">
+    <rect x="-115" y="-14" width="230" height="24" rx="12" fill="#00ffcc" fill-opacity="0.08" stroke="#00ffcc" stroke-opacity="0.3" stroke-width="1" />
+    <text text-anchor="middle" y="2" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="10.5" font-weight="700" fill="#00ffcc" letter-spacing="2">OFFENSIVE RESEARCH LAB</text>
+  </g>
+
+  <!-- Main Title -->
+  <text x="450" y="112" text-anchor="middle" font-family="'Inter', -apple-system, sans-serif" font-size="34" font-weight="900" fill="#ffffff" letter-spacing="-1">
+    LEVIATHAN <tspan fill="#00ffcc">OFFSEC</tspan>
+  </text>
+
+  <!-- Tagline -->
+  <text x="450" y="152" text-anchor="middle" font-family="'Inter', -apple-system, sans-serif" font-size="14.5" font-weight="500" fill="#94a3b8" letter-spacing="0.2">
+    High-throughput Go engines, stateless perimeter diffing &amp; deterministic vulnerability kernels.
+  </text>
+
+  <!-- Telemetry Bar -->
+  <g transform="translate(450, 195)">
+    <text text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="500" fill="#64748b" letter-spacing="1">
+      <tspan fill="#00ffcc">$</tspan> surfacediff <tspan fill="#38bdf8">&middot;</tspan> HostageLVX <tspan fill="#38bdf8">&middot;</tspan> FenrirLVX <tspan fill="#38bdf8">&middot;</tspan> leviathan-core <tspan fill="#38bdf8">&middot;</tspan> <tspan fill="#e2e8f0">leviathan.ac</tspan>
+    </text>
+  </g>
+</svg>
