@@ -52,7 +52,7 @@ subfinder -d example.com -silent | httpx -json -silent | surfacediff snap -l pro
 surfacediff diff -l prod
 
 # 3. Test what is there for verified takeovers
-HostageLVX -l subs.txt -threads 50
+hostage @subs.txt
 
 # 4. Fingerprint the CMS and correlate against the offline CVE set
 fenrir wordpress -t https://target.example.com
