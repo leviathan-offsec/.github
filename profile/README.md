@@ -82,8 +82,7 @@ MIT licensed.
 - **[Offline WordPress scanners compared](https://leviathan.ac/posts/offline-wordpress-scanner-comparison/)**: CMSmap, Nuclei and Wapiti measured on coverage disclosure, against a reproducible fixture.
 
 One favicon hash from a passive index read spans 723,646 hosts across 49 product
-strings, including Lorex and KB Vision rebadges. No device was contacted. The
-census script is in `[a private repo]`.
+strings, including Lorex and KB Vision rebadges. No device was contacted.
 
 [All research](https://leviathan.ac/research/) · [leviathan.ac](https://leviathan.ac)
 
