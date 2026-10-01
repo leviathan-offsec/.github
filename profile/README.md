@@ -108,16 +108,6 @@ suits.
 
 ---
 
-## Design
-
-One palette, one type scale, one evidence block, shared by the site, these
-READMEs and the dashboard: [`assets/brand.css`](https://github.com/leviathan-offsec/leviathan-offsec.github.io/blob/main/assets/brand.css).
-Positioning, palette meanings and the seven rules are in
-[BRAND.md](https://github.com/leviathan-offsec/leviathan-offsec.github.io/blob/main/BRAND.md),
-the implementation spec in [DESIGN.md](https://github.com/leviathan-offsec/leviathan-offsec.github.io/blob/main/DESIGN.md).
-
----
-
 <div align="center">
   <sub>Research lab by <a href="https://github.com/cyeezy08">@cyeezy08</a> · <a href="https://leviathan.ac">leviathan.ac</a></sub>
 </div>
