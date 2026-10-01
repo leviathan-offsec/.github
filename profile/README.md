@@ -2,7 +2,7 @@
 
 # LEVIATHAN OFFSEC
 
-**High-Throughput Unix Security Tooling & Autonomous Recon Architecture**
+**Security tooling for offensive research: recon, perimeter auditing, and firmware analysis.**
 
 [![Web](https://img.shields.io/badge/Platform-leviathan.ac-00ffcc?style=for-the-badge&logo=firefox&logoColor=black)](https://leviathan.ac)
 [![License](https://img.shields.io/badge/License-MIT-111111?style=for-the-badge)](https://opensource.org/licenses/MIT)
@@ -33,7 +33,8 @@
 
 ### Featured Research
 
-* **[80 Days Reverse Engineering an IoT DVR](https://leviathan.ac/posts/80-days-reversing-iot-dvr.html)**: Technical teardown of stripped ARM32 surveillance firmware, recovering hardcoded AES-128 keys, and an honest post-mortem on hardware target selection.
+* **[80 Days Reverse Engineering an IoT DVR](https://leviathan.ac/posts/80-days-reversing-iot-dvr.html)**: Stripped ARM32 surveillance firmware, 28,006 internet-facing units. Three findings proven at the binary level, with the disassembly. No bounty, long-form post-mortem.
+* **Dahua IPC firmware**: Command injection primitive in `libpdi.so` (`NetSetDNSHostName` → `system("hostname %s")`), confirmed across two product classes and two library builds. Network reachability not established, and not claimed.
 
 ---
 
