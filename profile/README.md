@@ -4,7 +4,7 @@
 
 ---
 
-## The line that matters
+## What I Do Differently 
 
 Every scanner here prints a coverage number next to its result, because a tool
 that cannot say what it failed to check is asking to be trusted on faith.
@@ -79,8 +79,6 @@ MIT licensed.
 - **[80 Days Reversing an IoT DVR](https://leviathan.ac/posts/80-days-reversing-iot-dvr/)**: HiSilicon ARM32 surveillance firmware, 28,006 internet-facing units, three findings proven at the binary level with the disassembly included. No bounty. Includes the parts that did not work.
 - **[Offline WordPress scanners compared](https://leviathan.ac/posts/offline-wordpress-scanner-comparison/)**: CMSmap, Nuclei and Wapiti measured on coverage disclosure, against a reproducible fixture.
 
-One favicon hash from a passive index read spans 723,646 hosts across 49 product
-strings, including Lorex and KB Vision rebadges. No device was contacted.
 
 [All research](https://leviathan.ac/research/) · [leviathan.ac](https://leviathan.ac)
 
